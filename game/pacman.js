@@ -1,9 +1,11 @@
-function Pacman() {
+var pacman = exports = module.exports = {}
+
+pacman.init = function() {
 	this.currentCell
-	
+	this.move = pacman.move
 }
 
-Pacman.prototype.move = function(keyDirection) {
+pacman.move = function(keyDirection) {
 	if(keyDirection == "down")
 	{
 		this.currentCell = parseInt(this.currentCell[0]) + 1 + this.currentCell[1] + this.currentCell[2]
