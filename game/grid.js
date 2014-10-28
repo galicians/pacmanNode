@@ -10,7 +10,6 @@ grid.init = function() {
 grid.factory = function(object) {
 	for(var i = 1; i < 31; i++) {
 		for(var j = 1; j < 31; j++) {
-			console.log(i + ':' + j)
 			this[i + ':' + j] = new object
 		}
 	}
@@ -19,5 +18,6 @@ grid.factory = function(object) {
 grid.placing = function(object,position) {
 	if (this[position].isAvailable) {
 	this[position].changeContent(object)
-	object.currentCell = position }
+	object.currentCell = position 
+	this[position].name = object.name}
 }

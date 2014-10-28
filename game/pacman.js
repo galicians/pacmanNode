@@ -3,6 +3,7 @@ var pacman = exports = module.exports = {}
 pacman.init = function() {
 	this.currentCell
 	this.move = pacman.move
+	this.name = 'pacman'
 }
 
 pacman.move = function(keyDirection) {
