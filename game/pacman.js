@@ -1,9 +1,11 @@
 var pacman = exports = module.exports = {}
 
-pacman.init = function() {
+pacman.init = function(socket) {
 	this.currentCell
 	this.move = pacman.move
 	this.name = 'pacman'
+	this.user
+	if(typeof(socket)==='undefined') this.user="anonymous";
 }
 
 pacman.move = function(keyDirection) {

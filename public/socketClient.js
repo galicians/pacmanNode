@@ -1,18 +1,22 @@
 window.onload = function() {
-	alert("client sockets loading")
 	var socket = io()
-				socket.emit('keydown', function() { console.log("down") })
-				socket.on('points', function(points) {
-					console.log(points)
-				})
+				socket.emit('keydown', function(data) { console.log(data) })
+				socket.on('points', function(points) { } )
+					
+				
 				
 	document.addEventListener('keydown', function(event) {
 	    if(event.keyCode == 37) {
-	    	alert("its the socket loading")
-	        socket.emit('keydown', function() { return "down" })
+	        socket.emit('keydown', function() { return "left" })
 	    }
-	    else if(event.keyCode == 39) {
-	        socket.emit('keydown', function() { console.log("down") })
+	    else if(event.keyCode == 38) {
+	        socket.emit('keydown', function() { return "up" })
+	    }
+	     else if(event.keyCode == 39) {
+	        socket.emit('keydown', function() { return "right" })
+	    }
+	     else if(event.keyCode == 39) {
+	        socket.emit('keydown', function() { return "down" })
 	    }
 	});
 

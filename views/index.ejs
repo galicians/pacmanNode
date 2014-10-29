@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Pacman multiplayer</title>
-
+ <link rel='stylesheet' href='/main.css'>
 </head>
 <body>
 <h1>Pacman!!</h1>
@@ -16,7 +16,7 @@
 <% for(var i = 1; i < 31; i++) {				%>	
 <tr>
 <%	for(var j = 1; j < 31; j++) {				%>
-<td><%= 	board[i + ':' + j].name				%></td>
+<td class='cell'><%= 	board[i + ':' + j].name				%></td>
 <%  }											%>
 </tr>										
 <%  }											%>
@@ -29,20 +29,14 @@
 
 
 
+<img class="pacman" id="yellowPacman" src="/pacman.png">
 
 
-
-
-
-
-<!-- <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script> -->
 <script src="/socket.io/socket.io.js"></script>
-<script src="/alert.js"></script>
 <script src="/socketClient.js"></script>
-
-
-
-
 <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+
+<script src="/interface.js"></script>
+
 </body>
   </html>
