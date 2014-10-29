@@ -1,44 +1,24 @@
-var express = require('express')
-var app = express()
-var http = require('http').Server(app);
 var cell = require('./game/cell.js')
 var grid = require('./game/grid.js')
 var pacman = require('./game/pacman.js')
-app.set('view engine', 'ejs')
-var net = require('net')
+
+var app = require('express')()
+var http = require('http').Server(app);
+// var net = require('net')
 var io = require('socket.io')(http);
-// var routes = require('./routes')
 
-// var sockets = []
+app.use(require('express').static(__dirname + '/public'));
 
+
+app.set('view engine', 'ejs')
 
 io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
+  console.log('a user connected');
+  socket.on('keydown', function(key) {console.log(key)})
+});
 
-})
 
 app.get('/', function(request,response){
-
-// 	socket = new net.Socket({ fd: null
-//   allowHalfOpen: false,
-//   readable: false,
-//   writable: false
-// })
-// 	// sockets.push(socket)
-	// var client = net.connect({port: 5000}, function() { console.log('client.connected')})
-	
-
-	// socket.on('data', function(d) {
-	// 	for( var i = 0; i < sockets.length; i++) { sockets[i].write(d)
-	// 		console.log(d)
-	// 		console.log(sockets.length)
-	// 		console.log(socket.write(d))
-	// 	}
-		
-	// })
-
 
 	console.log(request.method + ' ' + request.url)
 	
@@ -50,10 +30,10 @@ app.get('/', function(request,response){
 	response.render('index', board)
 })
 
-app.get('*', function(request,response){
-	console.log(request.method + ' ' + request.url)
-	response.send("bad route")
-})
+// app.get('*', function(request,response){
+// 	console.log(request.method + ' ' + request.url)
+// 	response.send("bad route")
+// })
 
 
 app.listen(5000, function() { 

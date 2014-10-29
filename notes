@@ -30,3 +30,22 @@
 <%		}										%>
 <%  }											%>
 </table>
+
+
+        
+     <%    var socket = io()                                                %>
+    <%   socket.emit('keydown', function() { console.log("down") })         %>
+     <%    socket.on('points', function(points) { variablevariablevariable    %>
+     <%     console.log(points)                                             %>
+     <%    })                                                               %>
+      <p>  <%= 'hello' %></p>
+     <%    document.addEventListener('keydown', function(event) { %>
+    <%         if(event.keyCode == 37) {                                      %>
+      <%           window.alert('down')                                       %>
+      <%           socket.emit('keydown', function() { return "down" })       %>
+      <%       }                              %>
+       <%      if(event.keyCode == 39) {         %>
+        <%         window.alert('up')             %>
+        <%         socket.emit('keydown', function() { console.log("down") })     %>
+       <%      }      %>
+    <%     });          %>

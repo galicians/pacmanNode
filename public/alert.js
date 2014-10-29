@@ -1,0 +1,1 @@
+window.alert("im in the views folder")
