@@ -29,7 +29,7 @@ io.on('connection', function(socket){
   	 if (clients[socket.handshake['address']] == undefined) {
   	 	clients[socket.handshake['address']] = socket
   	 	newPacmanJoinsGame(socket)
-  	 	console.log("new pacman created")
+  	 	console.log("new pacman created at position: ", newPlayer.currentCell)
   	 	console.log(socket.handshake['address'])
   	 	usersConnected += 1
   	 }
@@ -45,18 +45,20 @@ io.on('connection', function(socket){
 		randomColumn = Math.floor(1 + Math.random() * 29).toString()
 		startingPoint = randomRow + ':' + randomColumn
 		board.placing(newPlayer, startingPoint )
+		console.log('inside of create pacman')
 	}
 
 	
 
 
-  socket.on('keydown', function(key) {
-  	 console.log("Number of users connected", usersConnected)
-
-  	
+  socket.on('keydown', function(event) {
+  	console.log('inside of keydwon')
+  	 console.log(event)
+  	 newPlayer.move(event)
+  	 console.log(newPlayer.currentCell)
   })
   
-});
+})
 
 
 

@@ -15,7 +15,6 @@ $('.cell').each( function() { if ($(this).html() == 'pacman') {
 
 
 
-
 // $('#yellowPacman').appendTo($('.cell')[0])
 $('.cell').css('background-color', 'black')
 // $('.cell:contains('pacman')').css('background-image', )

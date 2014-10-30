@@ -9,27 +9,25 @@ pacman.init = function(socket) {
 }
 
 pacman.move = function(keyDirection) {
-	if(keyDirection == "down")
+ 	var row = parseInt(this.currentCell.substring(0,this.currentCell.indexOf(':')))
+	var column = parseInt(this.currentCell.substring(this.currentCell.indexOf(':') + 1,this.currentCell.length))
+	
+	if(keyDirection == "down" && row > 1)
 	{
-		this.currentCell = parseInt(this.currentCell[0]) + 1 + this.currentCell[1] + this.currentCell[2]
+		this.currentCell = (row - 1).toString() + ':' + column.toString()
 	}
 
-	if(keyDirection == "up")
+	if(keyDirection == "up" && row < 30)
 	{
-		this.currentCell = parseInt(this.currentCell[0]) - 1 + this.currentCell[1] + this.currentCell[2]
+		this.currentCell = (row + 1).toString() + ':' + column.toString()
 	}
-	if(keyDirection == "left")
+	if(keyDirection == "left" &&  column > 1)
 	{
-		this.currentCell = this.currentCell[0] + this.currentCell[1] + (parseInt(this.currentCell[2]) - 1)
+		this.currentCell = row.toString() + ':' + (column - 1).toString()
 	}
-	if(keyDirection == "right")
+	if(keyDirection == "right" && column < 30)
 	{
-		this.currentCell = this.currentCell[0] + this.currentCell[1] + (parseInt(this.currentCell[2]) + 1)
+		this.currentCell = row.toString() + ':' + (column + 1).toString()
 	}
+	
 }
-// row:column
-// 4:6
-// arrow down --> 5:6
-// arrow up -->  3:6
-// arrow right --> 4:7
-// arrow left --> 4:5
